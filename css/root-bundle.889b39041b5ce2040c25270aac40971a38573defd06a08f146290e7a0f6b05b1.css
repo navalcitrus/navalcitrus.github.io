@@ -1,0 +1,1056 @@
+/* ===== Start of brand.css ===== */
+/* ===== Color Variables ===== */
+:root {
+    --color-surface-rgb: 29 138 165;
+    --color-surface: rgb(var(--color-surface-rgb));
+    --color-mid-rgb: 16 78 99;
+    --color-mid: rgb(var(--color-mid-rgb));
+    --color-deep-rgb: 12 52 68;
+    --color-deep: rgb(var(--color-deep-rgb));
+    --color-abyss-rgb: 29 45 58;
+    --color-abyss: rgb(var(--color-abyss-rgb));
+    --main-header-color: rgb(29 157 192);
+    --main-title-color: rgb(165 225 224);
+    --main-text-color: rgb(224 244 242);
+    --main-link-unvisited-color: rgb(29 165 208);
+    --main-link-visited-color: rgb(122 156 167);
+    --main-link-hover-color: rgb(162 232 240);
+    --nav-link-color: rgb(138 207 224);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --highlight-color: rgba(38, 166, 154, 0.25);
+
+    --surface-soft: color-mix(in srgb, var(--color-surface), white 5%);
+    --abyss-soft: color-mix(in srgb, var(--color-abyss), white 5%);
+}
+
+/* ===== Accessibility & Responsiveness ===== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    body::before {
+        display: none;
+        /* Remove bubble effect */
+    }
+
+    .post-title::after {
+        opacity: 0;
+    }
+}
+
+@media screen and (max-width: 512px) {
+    html {
+        font-size: 90%;
+    }
+
+    .hidesmallscreen {
+        display: none;
+        visibility: hidden;
+        width: 0;
+        height: 0;
+    }
+}
+
+@media screen and (min-width: 513px) {
+    table {
+        display: table;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    html {
+        font-size: 110%;
+    }
+}
+
+@media screen and (min-width: 2048px) {
+    html {
+        font-size: 120%;
+    }
+}
+
+/* ===== General Layout ===== */
+body {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    color: var(--main-text-color);
+    text-align: left;
+    letter-spacing: 0.03em;
+
+    background-image: linear-gradient(to bottom,
+            var(--color-surface) 0%,
+            var(--color-mid) 20%,
+            var(--color-deep) 45%,
+            var(--color-abyss) 80%);
+    background-size: 100% 600px;
+    background-repeat: repeat-x;
+    background-color: var(--color-abyss);
+
+    line-height: 1.7;
+    padding: 0 1rem;
+    margin: 0 auto;
+
+    max-width: 50rem;
+    min-height: 100vh;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+body::before {
+    /* Bubbles */
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image:
+        radial-gradient(circle at 75% 30%, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        radial-gradient(circle at 25% 61%, rgba(255, 255, 255, 0.03) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 46% 82%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        radial-gradient(circle at 12% 15%, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 93% 76%, rgba(255, 255, 255, 0.04) 2px, transparent 2px),
+        radial-gradient(circle at 63% 54%, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    /* Use prime numbers to reduce pattern recognition */
+    background-size: 193px 227px, 149px 151px, 211px 191px, 97px 113px, 173px 181px, 139px 163px;
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.9;
+}
+
+/* ===== Links ===== */
+a {
+    color: var(--main-link-unvisited-color);
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+}
+
+a.external {
+    text-decoration: none;
+    border-bottom: 1px dotted var(--main-link-unvisited-color);
+}
+
+nav a {
+    margin-right: 10px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    text-decoration: none;
+    color: var(--nav-link-color);
+}
+
+a:not(nav a):visited {
+    color: var(--main-link-visited-color);
+}
+
+a:not(nav a):visited.external {
+    text-decoration: none;
+    border-bottom: 1px dotted var(--main-link-unvisited-color);
+}
+
+a:not(nav a):hover {
+    color: var(--main-link-hover-color);
+}
+
+/* ===== Images ===== */
+img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--color-surface);
+    border-radius: 2px;
+    box-shadow: 0 0 12px var(--shadow-color);
+}
+
+/* ===== End of brand.css ===== *//* ===== Start of style.css ===== */
+main {
+    padding-bottom: 2.5rem;
+}
+
+/* Top-of-body site header. */
+body>header {
+    padding-top: 56px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+}
+
+footer {
+    width: 100%;
+    font-size: 10px;
+    padding-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+mark {
+    background-color: var(--highlight-color);
+    color: var(--main-title-color);
+    padding: 0.1em 0.2em;
+}
+
+/* ===== Article Styling ===== */
+article {
+    background: var(--color-deep);
+    border: 1px solid var(--color-surface);
+    border-radius: 2px;
+    box-shadow: 0 0 15px var(--shadow-color);
+    padding: 1.5rem;
+}
+
+
+article p+p {
+    margin-top: 1.5rem;
+}
+
+/* ===== Typography ===== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--main-header-color);
+}
+
+
+.post-title {
+    font-weight: 500;
+    margin: 0 0 1rem;
+    color: var(--main-title-color);
+}
+
+/* Meta strip under a post title. */
+.post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem;
+    margin: 0 0 1.7rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px dotted var(--color-mid);
+    font-size: 0.8rem;
+}
+
+.post-meta .published-on {
+    font-style: italic;
+    color: var(--main-link-visited-color);
+    opacity: 0.85;
+}
+
+.post-meta>ul.post-tags,
+.post-meta>ul.post-categories {
+    margin-left: auto;
+    float: none;
+}
+
+.post-title::after {
+    content: "_";
+    opacity: 0;
+    animation: cursor-blink 2.5s infinite;
+    will-change: opacity;
+}
+
+@keyframes cursor-blink {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ===== Navigation ===== */
+hr {
+    border-style: dotted none none;
+    border-width: 2px;
+    border-color: var(--color-mid);
+}
+
+nav {
+    vertical-align: bottom;
+}
+
+nav ol {
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav ol li {
+    display: inline;
+}
+
+nav ol li:not(:last-child)::after {
+    content: "/";
+    color: var(--main-text-color);
+    opacity: 0.6;
+}
+
+.dirlist {
+    list-style: none;
+}
+
+.dirlist li::before {
+    content: '';
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    height: 1em;
+    width: 1em;
+    position: absolute;
+    margin-left: -1.5em;
+    margin-top: 0.2em;
+}
+
+.dirlist-home::before {
+    background-image: url("/images/home.svg");
+}
+
+.dirlist-page::before {
+    background-image: url("/images/document.svg");
+}
+
+.dirlist-parent::before {
+    background-image: url("/images/undo.svg");
+}
+
+.dirlist-section::before,
+.dirlist-taxonomy::before {
+    background-image: url("/images/folder.svg");
+}
+
+.dirlist-term::before {
+    background-image: url("/images/tag.svg");
+}
+
+/* ===== Utility Classes ===== */
+.float-right {
+    float: right;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+/* ===== Tags ===== */
+ul.post-tags,
+ul.post-categories {
+    float: right;
+    margin: 0;
+    padding: 0;
+}
+
+.post-tags li,
+.post-categories li {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    margin-left: 0.3rem;
+    font-size: 0.8rem;
+}
+
+/* ===== Media Elements ===== */
+img,
+picture,
+video {
+    height: auto;
+    max-width: 100%;
+    display: block;
+    margin: 1.5rem auto;
+    border-radius: 2px;
+}
+
+img {
+    object-fit: contain;
+    box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+/* ===== Code & Pre Elements ===== */
+pre {
+    border: 1px solid var(--color-surface);
+    border-radius: 3px;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    position: relative;
+    box-shadow: 0 0 12px var(--shadow-color);
+}
+
+li code {
+    vertical-align: middle;
+}
+
+/* ===== Tables ===== */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    display: block;
+}
+
+th {
+    background-color: var(--color-deep);
+    color: var(--main-title-color);
+    font-weight: 500;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid var(--color-surface);
+}
+
+td {
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid rgba(29, 138, 165, 0.2)
+        /*--color-surface*/
+    ;
+    vertical-align: top;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(12, 52, 68, 0.3)
+        /*--color-deep*/
+    ;
+}
+
+tr:hover {
+    background-color: rgba(29, 157, 192, 0.1)
+        /*--main-header-color*/
+    ;
+}
+
+/* ===== Block Quotes ===== */
+blockquote {
+    border-left: 3px solid var(--color-surface);
+    margin: 1.5rem 0;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    font-style: italic;
+    color: var(--main-text-color);
+    opacity: 0.9;
+    background-color: rgba(12, 52, 68, 0.3)
+        /*--color-deep*/
+    ;
+}
+
+blockquote cite {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--main-link-visited-color);
+    font-style: normal;
+}
+
+/* ===== Useful Container ===== */
+.panel {
+    background: var(--color-deep);
+    border: 1px solid var(--color-surface);
+    border-radius: 2px;
+    box-shadow: 0 0 15px var(--shadow-color);
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+}
+
+/* ===== 404 ===== */
+.post-title.glitch {
+    position: relative;
+}
+
+.post-title.glitch::before,
+.post-title.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.post-title.glitch::before {
+    transform: translateX(1px);
+    clip-path: inset(0 0 60% 0);
+    animation: glitch-slice 6.5s infinite;
+}
+
+.post-title.glitch::after {
+    transform: translateX(-1px);
+    clip-path: inset(50% 0 0 0);
+    animation: glitch-slice 7.2s infinite;
+}
+
+@keyframes glitch-slice {
+
+    0%,
+    92%,
+    100% {
+        opacity: 0.12;
+        transform: translateX(0);
+    }
+
+    93% {
+        opacity: 0.22;
+        transform: translateX(10px);
+    }
+
+    94% {
+        opacity: 0.10;
+        transform: translateX(-10px);
+    }
+
+    95% {
+        opacity: 0.18;
+        transform: translateX(5px);
+    }
+
+    96% {
+        opacity: 0.12;
+        transform: translateX(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .error-404::after,
+    .post-title.glitch::before,
+    .post-title.glitch::after {
+        animation: none !important;
+    }
+}
+
+/* ===== End of style.css ===== *//* ===== Start of syntax.css ===== */
+/* ===== Modified Color Variables ===== */
+:root {
+    --syntax-bg: #1D2D3A;
+    --syntax-text: #d8dee9;
+    --syntax-comment: #607D8B;
+    --syntax-comment-alt: #546E7A;
+    --syntax-keyword: #1D9DC0;
+    --syntax-string: #8ACFE0;
+    --syntax-string-special: #A2E8F0;
+    --syntax-number: #A5E1E0;
+    --syntax-function: #B9F2FF;
+    --syntax-variable: #E0F4F2;
+    --syntax-punctuation: #f5f5f5;
+    --syntax-error: #ff8a80;
+    --syntax-line-numbers: #5D8D99;
+    --syntax-line-highlight: rgba(38, 166, 154, 0.25);
+}
+
+/* PreWrapper */
+.chroma {
+    color: var(--syntax-text);
+    background-color: var(--syntax-bg);
+}
+
+/* Other */
+.chroma .x {}
+
+/* Error */
+.chroma .err {
+    color: var(--syntax-error);
+}
+
+/* CodeLine */
+.chroma .cl {}
+
+/* LineLink */
+.chroma .lnlinks {
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* LineTableTD */
+.chroma .lntd {
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+/* LineTable */
+.chroma .lntable {
+    border-spacing: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+/* LineHighlight */
+.chroma .hl {
+    background-color: var(--syntax-line-highlight);
+}
+
+/* LineNumbersTable */
+.chroma .lnt {
+    white-space: pre;
+    -webkit-user-select: none;
+    user-select: none;
+    margin-right: 0.4em;
+    padding: 0 0.4em 0 0.4em;
+    color: var(--syntax-line-numbers);
+}
+
+/* LineNumbers */
+.chroma .ln {
+    white-space: pre;
+    -webkit-user-select: none;
+    user-select: none;
+    margin-right: 0.4em;
+    padding: 0 0.4em 0 0.4em;
+    color: var(--syntax-line-numbers);
+}
+
+/* Line */
+.chroma .line {
+    display: flex;
+}
+
+/* Keyword */
+.chroma .k,
+.chroma .kc,
+.chroma .kd,
+.chroma .kn,
+.chroma .kr {
+    color: var(--syntax-keyword);
+    font-weight: bold;
+}
+
+.chroma .kp,
+.chroma .kt {
+    color: #1D9DC0;
+}
+
+/* Names */
+.chroma .n {}
+
+.chroma .na,
+.chroma .nc,
+.chroma .no,
+.chroma .nl,
+.chroma .nn,
+.chroma .no {
+    color: #8fbcbb;
+}
+
+.chroma .nb {
+    color: var(--syntax-keyword);
+}
+
+.chroma .bp {}
+
+.chroma .nd,
+.chroma .ni {
+    color: var(--syntax-string);
+}
+
+.chroma .ne {
+    color: var(--syntax-error);
+}
+
+.chroma .nf {
+    color: var(--syntax-function);
+}
+
+.chroma .fm {}
+
+.chroma .nx {}
+
+.chroma .py {
+    color: #8fbcbb;
+}
+
+.chroma .nt {
+    color: var(--syntax-keyword);
+}
+
+.chroma .nv,
+.chroma .vc,
+.chroma .vg,
+.chroma .vi {
+    color: var(--syntax-variable);
+}
+
+.chroma .vm {}
+
+/* Literals */
+.chroma .l {}
+
+.chroma .ld {}
+
+/* Strings */
+.chroma .s,
+.chroma .sa,
+.chroma .sb,
+.chroma .sc,
+.chroma .dl,
+.chroma .s2,
+.chroma .sh,
+.chroma .si,
+.chroma .sx,
+.chroma .s1,
+.chroma .ss {
+    color: var(--syntax-string);
+}
+
+.chroma .sd {
+    color: var(--syntax-comment);
+    font-style: italic;
+}
+
+.chroma .se,
+.chroma .sr {
+    color: var(--syntax-string-special);
+}
+
+/* Numbers */
+.chroma .m,
+.chroma .mb,
+.chroma .mf,
+.chroma .mh,
+.chroma .mi,
+.chroma .il,
+.chroma .mo {
+    color: var(--syntax-number);
+}
+
+/* Operators */
+.chroma .o {
+    color: var(--syntax-keyword);
+}
+
+.chroma .ow {
+    color: var(--syntax-keyword);
+    font-weight: bold;
+}
+
+/* Punctuation */
+.chroma .p {
+    color: var(--syntax-punctuation);
+}
+
+/* Comment */
+.chroma .c,
+.chroma .ch,
+.chroma .cm,
+.chroma .c1,
+.chroma .cs {
+    color: var(--syntax-comment);
+    font-style: italic;
+}
+
+.chroma .cp,
+.chroma .cpf {
+    color: var(--syntax-comment-alt);
+    font-style: italic;
+}
+
+/* Generic */
+.chroma .g {}
+
+.chroma .gd {
+    color: var(--syntax-error);
+}
+
+.chroma .ge {
+    font-style: italic;
+}
+
+.chroma .gr {
+    color: var(--syntax-error);
+}
+
+.chroma .gh {
+    color: var(--syntax-keyword);
+    font-weight: bold;
+}
+
+.chroma .gi {
+    color: var(--syntax-string);
+}
+
+.chroma .go {}
+
+.chroma .gp {
+    color: var(--syntax-comment);
+    font-weight: bold;
+}
+
+.chroma .gs {
+    font-weight: bold;
+}
+
+.chroma .gu {
+    color: var(--syntax-keyword);
+    font-weight: bold;
+}
+
+.chroma .gt {
+    color: var(--syntax-error);
+}
+
+.chroma .gl {}
+
+.chroma .w {}
+
+/* ===== End of syntax.css ===== *//* ===== Start of root.css ===== */
+header.root-header {
+    padding-top: 56px;
+    display: block;
+}
+
+.root-title {
+    color: var(--main-title-color);
+    margin: 0;
+    font-weight: 500;
+}
+
+.root-tagline {
+    margin: 0.5rem 0 0;
+    opacity: 0.9;
+}
+
+.dir {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 1.5rem;
+}
+
+.dir li {
+    margin: 0.5rem 0;
+}
+
+.dir li::before {
+    content: '';
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    height: 1em;
+    width: 1em;
+    position: absolute;
+    margin-left: -1.5em;
+    margin-top: 0.2em;
+}
+
+.dir-home::before {
+    background-image: url("/images/home.svg");
+}
+
+.dir-zone::before {
+    background-image: url("/images/folder.svg");
+}
+
+.dir-info::before {
+    background-image: url("/images/document.svg");
+}
+
+.dir-code::before {
+    background-image: url("/images/tag.svg");
+}
+
+.small {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.centered {
+    display: grid;
+    justify-items: center;
+}
+
+@media screen and (min-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ===== End of root.css ===== *//* ===== Start of about.css ===== */
+
+.fetch {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1.25rem;
+    align-items: start;
+}
+
+.fetch-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 2px;
+    border: 1px solid var(--color-surface);
+    box-shadow: 0 0 12px var(--shadow-color);
+    background: var(--surface-soft);
+    object-fit: cover;
+}
+
+.fetch-avatar--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--main-title-color);
+    opacity: 0.8;
+}
+
+.fetch-title {
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--main-title-color);
+}
+
+.fetch-at {
+    opacity: 0.75;
+}
+
+.fetch-user {
+    color: var(--main-title-color);
+}
+
+.fetch-host {
+    color: var(--main-header-color);
+}
+
+/* Neofetch colors bar */
+.fetch-bar {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0.25rem;
+    margin: 0.5rem 0 0.75rem;
+    opacity: 0.85;
+}
+
+.fetch-bar .swatch {
+    height: 7px;
+    border-radius: var(2px);
+    border: 1px solid var(--color-surface);
+    box-shadow: 0 0 12px var(--shadow-color);
+}
+
+/* swatch colors come from brand.css tokens */
+.fetch-bar .s1 {
+    background: var(--color-surface);
+}
+
+.fetch-bar .s2 {
+    background: var(--color-mid);
+}
+
+.fetch-bar .s3 {
+    background: var(--color-deep);
+}
+
+.fetch-bar .s4 {
+    background: var(--color-abyss);
+}
+
+.fetch-bar .s5 {
+    background: var(--main-header-color);
+}
+
+.fetch-bar .s6 {
+    background: var(--main-title-color);
+}
+
+.fetch-bar .s7 {
+    background: var(--main-link-visited-color);
+}
+
+.fetch-bar .s8 {
+    background: var(--main-link-hover-color);
+}
+
+.fetch-subtitle {
+    margin: 0 0 0.75rem;
+    opacity: 0.9;
+}
+
+/* Key/value rows */
+.fetch-kv {
+    margin: 0;
+    display: grid;
+    gap: 0.4rem;
+}
+
+.fetch-row {
+    display: grid;
+    grid-template-columns: 8.5rem 1fr;
+    grid-gap: 0.75rem;
+}
+
+.fetch-kv dt {
+    color: var(--main-header-color);
+    opacity: 0.95;
+}
+
+.fetch-kv dd {
+    margin: 0;
+}
+
+.fetch-diag {
+    margin: 0.75rem 0 0;
+    border: 1px solid var(--color-surface);
+    border-radius: 3px;
+    padding: 0.75rem;
+    box-shadow: 0 0 12px var(--shadow-color);
+    opacity: 0.92;
+}
+
+/* terminal coloring shared by the diag and finger blocks */
+.term-prompt {
+    opacity: 0.75;
+}
+
+.term-key {
+    color: var(--main-header-color);
+}
+
+.finger-cursor::after {
+    content: "_";
+    opacity: 0;
+    animation: cursor-blink 2.5s infinite;
+    will-change: opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .finger-cursor::after {
+        animation: none;
+        opacity: 1;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 640px) {
+    .fetch {
+        grid-template-columns: 1fr;
+    }
+
+    .fetch-avatar {
+        width: 96px;
+        height: 96px;
+    }
+
+    .fetch-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== End of about.css ===== */
