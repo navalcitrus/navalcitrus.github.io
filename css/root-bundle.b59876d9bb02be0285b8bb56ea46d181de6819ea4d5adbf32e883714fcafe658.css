@@ -242,7 +242,8 @@ h6 {
     float: none;
 }
 
-.post-title::after {
+.post-title::after,
+.term-cursor::after {
     content: "_";
     opacity: 0;
     animation: cursor-blink 2.5s infinite;
@@ -385,6 +386,21 @@ pre {
 
 li code {
     vertical-align: middle;
+}
+
+/* terminal coloring for prompt-style blocks (finger, 404) */
+.term-prompt {
+    opacity: 0.75;
+}
+
+.term-key {
+    color: var(--main-header-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .term-cursor::after {
+        opacity: 1;
+    }
 }
 
 /* ===== Tables ===== */
@@ -1012,29 +1028,6 @@ header.root-header {
     padding: 0.75rem;
     box-shadow: 0 0 12px var(--shadow-color);
     opacity: 0.92;
-}
-
-/* terminal coloring shared by the diag and finger blocks */
-.term-prompt {
-    opacity: 0.75;
-}
-
-.term-key {
-    color: var(--main-header-color);
-}
-
-.finger-cursor::after {
-    content: "_";
-    opacity: 0;
-    animation: cursor-blink 2.5s infinite;
-    will-change: opacity;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .finger-cursor::after {
-        animation: none;
-        opacity: 1;
-    }
 }
 
 /* Mobile */
