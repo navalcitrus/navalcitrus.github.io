@@ -274,6 +274,7 @@ nav {
 }
 
 nav ol {
+    display: inline;
     align-items: center;
     margin: 0;
     padding: 0;
@@ -902,7 +903,7 @@ header.root-header {
 
 .fetch {
     display: grid;
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 120px minmax(0, 1fr);
     gap: 1.25rem;
     align-items: start;
 }
@@ -915,6 +916,8 @@ header.root-header {
     box-shadow: 0 0 12px var(--shadow-color);
     background: var(--surface-soft);
     object-fit: cover;
+    display: block;
+    margin: 0;
 }
 
 .fetch-avatar--placeholder {
@@ -956,7 +959,7 @@ header.root-header {
 
 .fetch-bar .swatch {
     height: 7px;
-    border-radius: var(2px);
+    border-radius: 2px;
     border: 1px solid var(--color-surface);
     box-shadow: 0 0 12px var(--shadow-color);
 }
@@ -1028,21 +1031,86 @@ header.root-header {
     padding: 0.75rem;
     box-shadow: 0 0 12px var(--shadow-color);
     opacity: 0.92;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* One block per output line, with a hanging indent */
+.fetch-diag .term-line {
+    display: block;
+    padding-left: 2ch;
+    text-indent: -2ch;
+}
+
+.fetch-diag .term-indent {
+    padding-left: 4ch;
+    text-indent: -4ch;
 }
 
 /* Mobile */
 @media screen and (max-width: 640px) {
+    /* Avatar beside the title; everything else full width */
     .fetch {
-        grid-template-columns: 1fr;
+        grid-template-columns: 72px minmax(0, 1fr);
+        column-gap: 1rem;
+        row-gap: 0;
+    }
+
+    .fetch-right {
+        display: contents;
+    }
+
+    .fetch-left {
+        grid-row: 1 / span 3;
     }
 
     .fetch-avatar {
-        width: 96px;
-        height: 96px;
+        width: 64px;
+        height: 64px;
+    }
+
+    .fetch-title,
+    .fetch-bar,
+    .fetch-subtitle {
+        grid-column: 2;
+    }
+
+    .fetch-kv,
+    .fetch-diag {
+        grid-column: 1 / -1;
+    }
+
+    .fetch-bar {
+        gap: 0.2rem;
+    }
+
+    /* Key/value rows as "Focus: value" */
+    .fetch-kv {
+        gap: 0.35rem;
     }
 
     .fetch-row {
-        grid-template-columns: 1fr;
+        display: block;
+        padding-left: 2ch;
+        text-indent: -2ch;
+    }
+
+    .fetch-kv dt,
+    .fetch-kv dd {
+        display: inline;
+    }
+
+    .fetch-kv dt::after {
+        content: ": ";
+    }
+
+    /* finger: Name/Shell on their own lines */
+    .fetch-finger .term-pad {
+        display: none;
+    }
+
+    .fetch-finger .term-col {
+        display: block;
     }
 }
 
